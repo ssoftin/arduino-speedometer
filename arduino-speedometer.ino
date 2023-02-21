@@ -128,7 +128,7 @@ const uint8_t *frames[] = {
 
 // graphics library
 #include <GyverOLED.h>
-GyverOLED<SSD1306_128x64, OLED_BUFFER> oled;
+GyverOLED<SSD1306_128x64, OLED_BUFFER> oled; // if you have not default I2C address of the screen - pass it here: oled(address);
 
 // settings for averaging buffer
 #define SPEEDBUFSIZE  70
