@@ -179,7 +179,7 @@ void InterruptSpeed() {
   unsigned long cur = millis();
   float dif = cur - prev;
   if (dif > 0) {
-// Lets assume that pulses frequescy x4 fater (40hz equals 30km/h)
+// Lets assume that pulses frequency x4 faster (40hz equals 30km/h)
 // we need slightly modify speed formula - just divide result to 4
     float s = (3000.0 / 4) / dif + 0.5;
     AddSpeed(s);
