@@ -132,7 +132,7 @@ GyverOLED<SSD1306_128x64, OLED_BUFFER> oled; // if you have not default I2C addr
 
 // settings for averaging buffer
 #define SPEEDBUFSIZE  70
-#define SPEEDAVGINTERVAL 1000 // 1000ms = 1sec
+#define SPEEDAVGINTERVAL 500 // 1000ms = 1sec
 
 // data struct for averaging buffer
 struct SPEEDMARK {
@@ -179,7 +179,9 @@ void InterruptSpeed() {
   unsigned long cur = millis();
   float dif = cur - prev;
   if (dif > 0) {
-    float s = 3000.0 / dif + 0.5;
+// Lets assume that pulses frequescy x4 fater (40hz equals 30km/h)
+// we need slightly modify speed formula - just multiply result x4
+    float s = (3000.0 * 4) / dif + 0.5;
     AddSpeed(s);
   }
   prev = cur;
